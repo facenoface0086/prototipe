@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Produk - Official Store</title>
+    <!-- DNS Prefetch untuk resource eksternal -->
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="icon" type="image/png" sizes="32x32" href="/imges/copy.png-removebg-preview.png">
+    <!-- CSS utama -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome - load async untuk tidak blocking -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    <!-- Google Fonts - load async -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <style>
+        .product-detail-section {
+            padding: var(--space-xl) 0;
+            margin-top: 80px;
+            background-color: #ffffff;
+            min-height: calc(100vh - 80px);
+        }
+
+        .product-detail-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-lg);
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            margin-bottom: var(--space-lg);
+            color: #0d6efd;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            color: #17a2b8;
+            transform: translateX(-5px);
+        }
+
+        .product-detail-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            background: var(--glass-bg);
+            padding: var(--space-xl);
+            border-radius: 20px;
+            box-shadow: var(--glass-shadow);
+        }
+
+        .product-detail-image {
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #f8f9fa;
+        }
+
+        .product-detail-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-detail-info h1 {
+            font-size: var(--font-size-2xl);
+            color: #0d6efd;
+            margin-bottom: var(--space-md);
+        }
+
+        .product-detail-price {
+            font-size: var(--font-size-2xl);
+            color: #0d6efd;
+            font-weight: 700;
+            margin-bottom: var(--space-lg);
+        }
+
+        .product-detail-description {
+            margin-bottom: var(--space-lg);
+            line-height: 1.8;
+            color: #495057;
+        }
+
+        .product-detail-description h3 {
+            color: #212529;
+            margin-bottom: var(--space-sm);
+            font-size: var(--font-size-lg);
+        }
+
+        .product-detail-actions {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .product-detail-actions .btn {
+            flex: 1;
+            min-width: 200px;
+            padding: var(--space-md) var(--space-lg);
+            font-size: var(--font-size-base);
+        }
+
+        .product-specs {
+            margin-top: var(--space-xl);
+            padding: var(--space-lg);
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+
+        .product-specs h3 {
+            color: #0d6efd;
+            margin-bottom: var(--space-md);
+            font-size: var(--font-size-lg);
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--space-sm) 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .spec-item:last-child {
+            border-bottom: none;
+        }
+
+        .spec-label {
+            font-weight: 600;
+            color: #212529;
+        }
+
+        .spec-value {
+            color: #495057;
+        }
+
+        .loading {
+            text-align: center;
+            padding: var(--space-xl);
+            font-size: var(--font-size-lg);
+            color: #0d6efd;
+        }
+
+        .error {
+            text-align: center;
+            padding: var(--space-xl);
+            color: #dc3545;
+        }
+
+        @media (max-width: 991.98px) {
+            .product-detail-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .product-detail-section {
+                margin-top: 70px;
+                padding: var(--space-md) 0;
+            }
+
+            .product-detail-container {
+                padding: var(--space-md);
+            }
+
+            .product-detail-content {
+                padding: var(--space-md);
+            }
+
+            .product-detail-info h1 {
+                font-size: var(--font-size-xl);
+            }
+
+            .product-detail-price {
+                font-size: var(--font-size-xl);
+            }
+
+            .product-detail-actions {
+                flex-direction: column;
+            }
+
+            .product-detail-actions .btn {
+                width: 100%;
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="/imges/copy.png-removebg-preview.png" alt="Logo" class="logo-brand">
+                <h1>Official Store</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#home">Beranda</a>
+                <a href="index.html#about">Tentang</a>
+                <a href="index.html#products">Produk</a>
+                <a href="index.html#contact">Kontak</a>
+            </div>
+            <div class="nav-actions">
+                <button class="cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </button>
+                <button class="hamburger" type="button" aria-label="Menu Navigasi">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Detail Section -->
+    <section class="product-detail-section">
+        <div class="product-detail-container">
+            <a href="index.html#products" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                <span>Kembali ke Produk</span>
+            </a>
+
+            <div id="productDetailContent">
+                <div class="loading" style="display: none;">
+                    <i class="fas fa-spinner fa-spin"></i> Memuat detail produk...
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <h2>Keranjang Belanja</h2>
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="cart-total">
+                <h3>Total: <span id="cartTotal">Rp 0</span></h3>
+            </div>
+            <div class="cart-buttons">
+                <button class="btn" id="checkoutBtn">Checkout</button>
+                <button class="btn" id="closeCart">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="product-detail.js" defer></script>
+</body>
+</html>
+

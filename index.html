@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store - Toko Online</title>
+    <!-- DNS Prefetch untuk resource eksternal -->
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="icon" type="image/png" sizes="32x32" href="/imges/copy.png-removebg-preview.png">
+    <!-- CSS utama - inline critical CSS atau load first -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome - load async untuk tidak blocking -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    <!-- Google Fonts - load async -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <!-- Script loader untuk async CSS -->
+    <script>
+        !function(e){"use strict";var t=function(t,n,o){var i,r=e.document,a=r.createElement("link");if(n)i=n;else{var l=(r.body||r.getElementsByTagName("head")[0]).childNodes;i=l[l.length-1]}var d=r.styleSheets;a.rel="stylesheet",a.href=t,a.media="only x",function e(t){if(r.body)return t();setTimeout(function(){e(t)})}(function(){i.parentNode.insertBefore(a,n?i:i.nextSibling)});var f=function(e){for(var t=a.href,n=d.length;n--;)if(d[n].href===t)return e();setTimeout(function(){f(e)})};return a.addEventListener&&a.addEventListener("load",function(){this.media=o||"all"}),a.onloadcssdefined=f,f(function(){a.media!==o&&(a.media=o||"all")}),a};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this);
+    </script>
+    <!-- Script non-critical dengan defer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="/imges/copy.png-removebg-preview.png" alt="Logo" class="logo-brand">
+                <h1>Official Store</h1>
+            </div>
+            <div class="nav-links">
+                <a href="#home">Beranda</a>
+                <a href="#about">Tentang</a>
+                <a href="#products">Produk</a>
+                <a href="#contact">Kontak</a>
+            </div>
+            <div class="nav-actions">
+                <button class="cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </button>
+                <button class="hamburger" type="button" aria-label="Menu Navigasi">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Menjadi Sehat dan Bertenaga Dengan Supelmen Semua Bisa</h1>
+                <p>Temukan berbagai macam Supelmen berkualitas tinggi dengan harga terbaik</p>
+                <a href="#products" class="btn">Lihat Produk</a>
+            </div>
+        </div>
+    </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <div class="about-container">
+                    <div class="about-image">
+                        <img src="imges/brands1.png.png" alt="Tentang Kami">
+                    </div>
+                    <div class="about-content">
+                        <h2>Tentang Kami</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum nemo commodi quas porro repellendus in minus? Assumenda dolorum debitis, reiciendis iure dolorem laboriosam molestiae fugit ut cumque voluptatum at quod.
+                        Vero odit quasi repudiandae odio. Deleniti dolorum in aut corporis repellendus accusantium, dolor modi quibusdam eius optio quia vero illum voluptatibus corrupti officia mollitia natus inventore quos? Consequuntur, recusandae architecto.</p>
+                        <div class="about-features">
+                            <div class="feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Produk Berkualitas</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-truck"></i>
+                                <span>Pengiriman Cepat</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-headset"></i>
+                                <span>Layanan 24/7</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2>Produk Kami</h2>
+            <div class="product-filters">
+                <button type="button" class="filter-btn active" data-filter="all">Semua</button>
+                <button type="button" class="filter-btn" data-filter="lorem1">Lorem1</button>
+                <button type="button" class="filter-btn" data-filter="lorem2">Lorem2</button>
+                <button type="button" class="filter-btn" data-filter="lorem3">Lorem3</button>
+                <button type="button" class="filter-btn" data-filter="lorem4">Lorem4</button>
+            </div>
+            <div class="product-grid" id="productGrid">
+                <!-- Product cards will be dynamically added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Hubungi Kami</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Alamat</h3>
+                            <p>Jl. Bahagia No. 29, Kabupaten Sampang, Indonesia</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Telepon</h3>
+                            <p>+62 821 3170 1032</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>aryacahya344@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="nama" placeholder="Nama Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Email Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Pesan Anda" id="pesan" required></textarea>
+                    </div>
+                    <button type="button" onclick="sendMessage()" class="btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <h2>Keranjang Belanja</h2>
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="cart-total">
+                <h3>Total: <span id="cartTotal">Rp 0</span></h3>
+            </div>
+            <div class="cart-buttons">
+                <button class="btn" id="checkoutBtn">Checkout</button>
+                <button class="btn" id="closeCart">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Tentang Kami</h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi a velit dicta quia! Voluptatum, eius magnam praesentium vel facere unde minus delectus perspiciatis architecto quaerat alias repudiandae ipsa ipsum tempore.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Link Cepat</h3>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#products">Produk</a></li>
+                        <li><a href="#about">Tentang</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Ikuti Kami</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Official Store. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+    <script>
+        function sendMessage() {
+            const nama = document.getElementById('nama').value;
+            const email = document.getElementById('email').value;
+            const pesan = document.getElementById('pesan').value;
+            
+            // Encode pesan untuk URL
+            const encodedMessage = encodeURIComponent(`Halo, saya ${nama} dengan email saya adalah ${email}. Pesan saya : "${pesan}"`);
+            const urlToWhatsapp = `https://wa.me/6282131701032?text=${encodedMessage}`;
+
+            window.open(urlToWhatsapp, "_blank");
+        }
+    </script>
+</body>
+</html> 
