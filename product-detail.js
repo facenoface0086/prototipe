@@ -5,7 +5,7 @@ const products = [
         name: "lorem 1", 
         price: 15000, 
         category: "lorem1", 
-        image: "/imges/gambar1.png",
+        image: "imges/gambar1.png",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Produk berkualitas tinggi dengan bahan-bahan terbaik untuk kesehatan Anda.",
         specs: {
             "Kategori": "lorem1",
@@ -19,7 +19,7 @@ const products = [
         name: "lorem 2", 
         price: 15000, 
         category: "lorem2", 
-        image: "/imges/gambar2.png",
+        image: "imges/gambar2.png",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Produk berkualitas tinggi dengan bahan-bahan terbaik untuk kesehatan Anda.",
         specs: {
             "Kategori": "lorem2",
@@ -33,7 +33,7 @@ const products = [
         name: "lorem 3", 
         price: 15000, 
         category: "lorem3", 
-        image: "/imges/gambar3.png",
+        image: "imges/gambar3.png",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Produk berkualitas tinggi dengan bahan-bahan terbaik untuk kesehatan Anda.",
         specs: {
             "Kategori": "lorem3",
@@ -47,7 +47,7 @@ const products = [
         name: "lorem 4", 
         price: 15000, 
         category: "lorem4", 
-        image: "/imges/gambar4.png",
+        image: "imges/gambar4.png",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Produk berkualitas tinggi dengan bahan-bahan terbaik untuk kesehatan Anda.",
         specs: {
             "Kategori": "lorem4",
@@ -303,4 +303,5 @@ if (closeCartBtn) {
         updateCartCount();
     }
 })();
+
 
