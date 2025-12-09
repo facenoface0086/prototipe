@@ -200,7 +200,7 @@ body {
 .hero {
     height: 100vh;
     /* pasang dengan berner produk mu!!! */
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/imges/brand2.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('imges/brand2.png');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -1307,4 +1307,5 @@ input[type="file"]::-webkit-file-upload-button {
 
 input[type="file"]::-webkit-file-upload-button:hover {
     background-color: #e9ecef;
+
 }
